@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+
+public class Perceptron {
+	
+	public static int dotProduct(ArrayList<Integer> a, ArrayList<Integer> b) {
+		if(a.size() != b.size()) {
+			throw new UnsupportedOperationException("Vectors were of difference size");
+		}
+		
+		int result = 0;
+		
+		for(int i = 0; i < a.size(); i++) {
+			result += a.get(i) * b.get(i);
+		}
+		
+		return result;
+	}
+	
+	public static Object[] perceptronTrain(int maxIter, ArrayList<ArrayList<Integer>> D, ArrayList<Integer> labels, boolean printIntermediateSteps){
+		//Initialize weights
+		ArrayList<Integer> weights = new ArrayList<Integer>();
+		
+		for(int i = 0; i < D.get(0).size(); i++) {
+			weights.add(0);
+		}
+		
+		//Initialize bias
+		Integer b = 0;
+		
+		int currentIteration = 1;
+		for( ; currentIteration <= maxIter; currentIteration++) {
+			for(int i = 0; i < D.size(); i++) {
+				int a = dotProduct(D.get(i), weights); //compute activation
+				int y = labels.get(i);
+				
+				if(y * a <= 0) {
+					//Update weights
+					for(int d=0; d<weights.size(); d++) {
+						weights.set(d, weights.get(d) + y*D.get(i).get(d));
+					}
+					
+					//Update bias
+					b = b + y;
+				}
+			}
+		}
+		
+		return new Object[] {weights, b};
+	}
+
+	public static void main(String[] args) {
+		ArrayList<Integer> lst = new ArrayList<>(5);
+		
+		System.out.println(lst);
+		
+	}
+
+}

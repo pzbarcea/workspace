@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+
+public class Perceptron {
+	
+	public class Point{
+		public int x1;
+		public int x2;
+		
+		public Point(int x1, int x2){
+			this.x1 = x1;
+			this.x2 = x2;
+		}
+		
+		public String toString() {
+			return "(" + x1 + ", " + x2 + ")";
+		}
+	}
+	
+	public Object[] perceptronTrain(int maxIter, ArrayList<Point> D, boolean printIntermediateSteps){
+		ArrayList<Integer> weights = new ArrayList<Integer>();
+		
+	}
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
